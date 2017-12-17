@@ -22,15 +22,10 @@ class LogitechMouse implements NativeMouseInputListener, NativeKeyListener, Nati
     // TODO add gestures https://github.com/fjkfwz/mouse-gesture-recognition-java-hidden-markov-model
     // TODO add gui configuration - map gestures / clicks to actions in selected apps
 
-    Robot r;
     MouseAction action = new MouseAction()
+    KeyboardCommand keyboard = new KeyboardCommand()
 
     public LogitechMouse() {
-        try {
-            r = new Robot();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
     @Override
@@ -66,25 +61,22 @@ class LogitechMouse implements NativeMouseInputListener, NativeKeyListener, Nati
 
     public void nativeMouseReleased(NativeMouseEvent e) {
         log.debug 'Mouse Released: ' + e.getButton() + ' ' + e.paramString()
-        if (e.getButton() == 4) {
-//            r.keyPress(KeyEvent.VK_NUMPAD7);
-//            r.keyRelease(KeyEvent.VK_NUMPAD7);
-            new KeyboardCommand().execute("VK_NUMPAD7")
-        }
-        if (e.getButton() == 5) {
-//            r.keyPress(KeyEvent.VK_NUMPAD1);
-//            r.keyRelease(KeyEvent.VK_NUMPAD1);
-            new KeyboardCommand().execute("VK_NUMPAD1")
-        }
-        if (e.getButton() == 0) {
-//            r.keyPress(KeyEvent.VK_NUMPAD3);
-//            r.keyRelease(KeyEvent.VK_NUMPAD3);
-            new KeyboardCommand().execute("VK_NUMPAD3")
+        switch (e.getButton()) {
+            case 4:
+                keyboard.execute("VK_NUMPAD7")
+                break
+            case 5:
+                keyboard.execute("VK_NUMPAD1")
+                break
+            case 0:
+                keyboard.execute("VK_NUMPAD3")
+                break
         }
     }
 
     public void nativeMouseMoved(NativeMouseEvent e) {
-        log.debug 'Mouse Moved: ' + e.getX() + ", " + e.getY()
+        // doesn't occur? only drag
+        log.trace 'Mouse Moved: ' + e.getX() + ", " + e.getY()
     }
 
     public void nativeMouseDragged(NativeMouseEvent e) {

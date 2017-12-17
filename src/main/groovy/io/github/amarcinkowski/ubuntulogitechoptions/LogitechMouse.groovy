@@ -52,7 +52,6 @@ class LogitechMouse implements NativeMouseInputListener, NativeKeyListener, Nati
     }
 
     @Override
-
     public void nativeKeyTyped(NativeKeyEvent nativeKeyEvent) {
         log.debug 'KEY typed ' + nativeKeyEvent.getKeyCode() + " | " + nativeKeyEvent.getRawCode()
     }
@@ -68,16 +67,19 @@ class LogitechMouse implements NativeMouseInputListener, NativeKeyListener, Nati
     public void nativeMouseReleased(NativeMouseEvent e) {
         log.debug 'Mouse Released: ' + e.getButton() + ' ' + e.paramString()
         if (e.getButton() == 4) {
-            r.keyPress(KeyEvent.VK_NUMPAD7);
-            r.keyRelease(KeyEvent.VK_NUMPAD7);
+//            r.keyPress(KeyEvent.VK_NUMPAD7);
+//            r.keyRelease(KeyEvent.VK_NUMPAD7);
+            new KeyboardCommand().execute("VK_NUMPAD7")
         }
         if (e.getButton() == 5) {
-            r.keyPress(KeyEvent.VK_NUMPAD1);
-            r.keyRelease(KeyEvent.VK_NUMPAD1);
+//            r.keyPress(KeyEvent.VK_NUMPAD1);
+//            r.keyRelease(KeyEvent.VK_NUMPAD1);
+            new KeyboardCommand().execute("VK_NUMPAD1")
         }
         if (e.getButton() == 0) {
-            r.keyPress(KeyEvent.VK_NUMPAD3);
-            r.keyRelease(KeyEvent.VK_NUMPAD3);
+//            r.keyPress(KeyEvent.VK_NUMPAD3);
+//            r.keyRelease(KeyEvent.VK_NUMPAD3);
+            new KeyboardCommand().execute("VK_NUMPAD3")
         }
     }
 

@@ -9,13 +9,10 @@ import java.util.logging.Level
 import java.util.logging.LogManager
 import java.util.logging.Logger
 
-/**
- * Created by am on 17.12.17.
- */
 @Slf4j
 class Main {
 
-    private static void clearLoggers() {
+    def static clearLoggers() {
         Logger rootLogger = LogManager.getLogManager().getLogger("");
         rootLogger.setLevel(Level.SEVERE);
         for (Handler h : rootLogger.getHandlers()) {
@@ -23,7 +20,7 @@ class Main {
         }
     }
 
-    private static void registerHook() {
+    def static registerHook() {
         try {
             GlobalScreen.registerNativeHook();
         } catch (NativeHookException ex) {

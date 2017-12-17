@@ -1,3 +1,12 @@
+#idea
+*.iml
+*.ipr
+*.iws
+
+#gradle
+.gradle/*
+build/
+
 # Compiled class file
 *.class
 

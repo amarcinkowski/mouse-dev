@@ -1,7 +1,9 @@
 package io.github.amarcinkowski.ubuntulogitechoptions.mouse
 
 import groovy.util.logging.Slf4j
-import io.github.amarcinkowski.ubuntulogitechoptions.command.KeyboardCommand
+import io.github.amarcinkowski.ubuntulogitechoptions.command.BlenderCommand
+import io.github.amarcinkowski.ubuntulogitechoptions.command.Command
+import io.github.amarcinkowski.ubuntulogitechoptions.keyboard.Keyboard
 import org.jnativehook.keyboard.NativeKeyEvent
 import org.jnativehook.keyboard.NativeKeyListener
 import org.jnativehook.mouse.NativeMouseEvent
@@ -21,7 +23,9 @@ class LogitechMouse implements NativeMouseInputListener, NativeKeyListener, Nati
     // TODO add gui configuration - map gestures / clicks to actions in selected apps
 
     MouseAction action = new MouseAction()
-    KeyboardCommand keyboard = new KeyboardCommand()
+    Keyboard keyboard = new Keyboard()
+    // choose app based on active window
+    Command command = new BlenderCommand()
 
     public LogitechMouse() {
     }
@@ -59,17 +63,8 @@ class LogitechMouse implements NativeMouseInputListener, NativeKeyListener, Nati
 
     public void nativeMouseReleased(NativeMouseEvent e) {
         log.debug 'Mouse Released: ' + e.getButton() + ' ' + e.paramString()
-        switch (e.getButton()) {
-            case 4:
-                keyboard.execute("VK_NUMPAD7")
-                break
-            case 5:
-                keyboard.execute("VK_NUMPAD1")
-                break
-            case 0:
-                keyboard.execute("VK_NUMPAD3")
-                break
-        }
+        command.execute("${e.getButton()}")
+
     }
 
     public void nativeMouseMoved(NativeMouseEvent e) {

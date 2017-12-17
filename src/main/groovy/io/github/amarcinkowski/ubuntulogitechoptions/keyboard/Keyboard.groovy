@@ -1,19 +1,19 @@
-package io.github.amarcinkowski.ubuntulogitechoptions.command
+package io.github.amarcinkowski.ubuntulogitechoptions.keyboard
 
 import groovy.util.logging.Slf4j
 
-import java.awt.Robot
+import java.awt.*
 import java.awt.event.KeyEvent
 
 @Slf4j
-class KeyboardCommand implements Command {
+class Keyboard {
 
     def Robot robot = new Robot()
-    @Override
-    void execute(String param) {
+
+    void type(String param) {
         int ke = KeyEvent."$param"
         robot.keyPress(ke)
         robot.keyRelease(ke)
-        log.info "KEYPRESS $ke"
+        log.info "TYPED: $ke"
     }
 }

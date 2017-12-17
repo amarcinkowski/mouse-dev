@@ -1,8 +1,5 @@
-package io.github.amarcinkowski.ubuntulogitechoptions
+package io.github.amarcinkowski.ubuntulogitechoptions.mouse
 
-/**
- * Created by am on 17.12.17.
- */
 class MouseAction {
     int isLogitechSpecial = 0;
     boolean isLogitechSpecialPressed = false;

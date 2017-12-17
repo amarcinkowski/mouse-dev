@@ -1,15 +1,13 @@
-package io.github.amarcinkowski.ubuntulogitechoptions
+package io.github.amarcinkowski.ubuntulogitechoptions.mouse
 
 import groovy.util.logging.Slf4j
+import io.github.amarcinkowski.ubuntulogitechoptions.command.KeyboardCommand
 import org.jnativehook.keyboard.NativeKeyEvent
 import org.jnativehook.keyboard.NativeKeyListener
 import org.jnativehook.mouse.NativeMouseEvent
 import org.jnativehook.mouse.NativeMouseInputListener
 import org.jnativehook.mouse.NativeMouseWheelEvent
 import org.jnativehook.mouse.NativeMouseWheelListener
-
-import java.awt.*
-import java.awt.event.KeyEvent
 
 @Slf4j
 class LogitechMouse implements NativeMouseInputListener, NativeKeyListener, NativeMouseWheelListener {

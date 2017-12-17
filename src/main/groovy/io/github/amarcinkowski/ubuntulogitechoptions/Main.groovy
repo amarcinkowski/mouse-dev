@@ -1,6 +1,7 @@
 package io.github.amarcinkowski.ubuntulogitechoptions
 
 import groovy.util.logging.Slf4j
+import io.github.amarcinkowski.ubuntulogitechoptions.mouse.LogitechMouse
 import org.jnativehook.GlobalScreen
 import org.jnativehook.NativeHookException
 
